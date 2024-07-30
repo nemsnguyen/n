@@ -1,38 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Đặt lịch hẹn</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Appointment</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Đặt lịch hẹn</h1>
-    <form id="booking-form">
-      <label for="fullname">Họ và tên:</label>
-      <input type="text" id="fullname" name="fullname" required><br><br>
-      <label for="phone">Số điện thoại:</label>
-      <input type="text" id="phone" name="phone" required><br><br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required><br><br>
-      <label for="booking-date">Ngày đặt lịch:</label>
-      <input type="date" id="booking-date" name="booking-date" required><br><br>
-      <label for="time">Thời gian:</label>
-      <select id="time" name="time">
-        <option value="9:30-10:30">9:30-10:30</option>
-        <option value="10:30-11:30">10:30-11:30</option>
-        <option value="14:30-15:30">14:30-15:30</option>
-        <option value="15:30-16:30">15:30-16:30</option>
-      </select><br><br>
-      <label for="service">Dịch vụ:</label>
-      <select id="service" name="service">
-        <option value="Visa">Visa</option>
-        <option value="Passport">Passport</option>
-        <option value="Legalization">Legalization</option>
-      </select><br><br>
-      <button type="submit">Đặt lịch</button>
-    </form>
-  </div>
+    <div class="container">
+        <h1>Book an Appointment</h1>
+        <form id="bookingForm">
+            <label for="fullname">Fullname:</label>
+            <input type="text" id="fullname" name="fullname" required>
 
-  <script src="script.js"></script>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="date">Booking Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <select id="time" name="time" required>
+                <option value="9:30-10:30">9:30-10:30</option>
+                <option value="10:30-11:30">10:30-11:30</option>
+                <option value="14:30-15:30">14:30-15:30</option>
+                <option value="15:30-16:30">15:30-16:30</option>
+            </select>
+
+            <label for="service">Service:</label>
+            <select id="service" name="service" required>
+                <option value="Visa">Visa</option>
+                <option value="Passport">Passport</option>
+                <option value="Legalization">Legalization</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
