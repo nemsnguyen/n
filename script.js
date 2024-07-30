@@ -17,7 +17,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
     let time = document.getElementById('time').value;
     let service = document.getElementById('service').value;
 
-    fetch('https://script.google.com/macros/s/AKfycby6RqFx0JIHq5hDSJj2Wt8EY_Vz4sJhM4eTFl9VJzp6/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyTiC6uQ58-bQ-o27qya7A3BuSyaVwW77NbFs76zumhfBZoy_RlCZ-0urEvz24Qh-vQqQ/exec', {  // Thay thế YOUR_WEB_APP_URL bằng URL của Web App
         method: 'POST',
         body: JSON.stringify({
             fullname: fullname,
@@ -33,8 +33,12 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('message').textContent = 'Booking successful!';
-        document.getElementById('bookingForm').reset();
+        if (data.status === "success") {
+            document.getElementById('message').textContent = 'Booking successful!';
+            document.getElementById('bookingForm').reset();
+        } else {
+            document.getElementById('message').textContent = 'Booking failed. Please try again.';
+        }
     })
     .catch(error => {
         document.getElementById('message').textContent = 'Booking failed. Please try again.';
