@@ -17,8 +17,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
     let time = document.getElementById('time').value;
     let service = document.getElementById('service').value;
 
-    fetch('https://script.google.com/macros/s/AKfycbyDiLZZB8U7I8bi05M44-FgqrpTqleFqDe6a7PZD1MB27oimkqsykW544F2S5WBEnRP8g/exec
-', {  // Thay thế YOUR_WEB_APP_URL bằng URL của Web App
+    fetch('https://script.google.com/macros/s/AKfycbzWIFDYnjB6u8c7h5Y7z-ecQXmt34oy3t_fSEZndfqu/dev', {  // Thay thế YOUR_WEB_APP_URL bằng URL của Web App
         method: 'POST',
         body: JSON.stringify({
             fullname: fullname,
