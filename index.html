@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Đặt Lịch Hẹn</title>
+  <script>
+    function validateDate() {
+      const dateInput = document.getElementById('appointmentDate').value;
+      const date = new Date(dateInput);
+      const dayOfWeek = date.getUTCDay(); // 0 là Chủ Nhật, 1 là Thứ Hai, v.v.
+
+      if (dayOfWeek !== 1 && dayOfWeek !== 3 && dayOfWeek !== 5) {
+        alert('Ngày bạn chọn không hợp lệ. Vui lòng chọn ngày Thứ 2, Thứ 4 hoặc Thứ 6.');
+        return false; // Ngăn không cho form được gửi đi
+      }
+
+      return true;
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+
+      if (!validateDate()) {
+        return;
+      }
+
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const appointmentDate = document.getElementById('appointmentDate').value;
+      const appointmentTime = document.getElementById('appointmentTime').value;
+
+      const formData = {
+        fullName: fullName,
+        email: email,
+        appointmentDate: appointmentDate,
+        appointmentTime: appointmentTime
+      };
+
+      console.log('Form data:', formData); // Log dữ liệu để kiểm tra
+
+      fetch('https://script.google.com/macros/s/AKfycbyDiLZZB8U7I8bi05M44-FgqrpTqleFqDe6a7PZD1MB27oimkqsykW544F2S5WBEnRP8g/exec', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        console.log('Response status:', response.status);
+        return response.json(); // Chuyển đổi phản hồi thành JSON
+      })
+      .then(data => {
+        console.log('Response data:', data); // Log phản hồi để kiểm tra
+        if (data.status === 'success') {
+          alert('Đặt lịch hẹn thành công!');
+          document.getElementById('appointmentForm').reset();
+        } else {
+          alert('Đã xảy ra lỗi khi đặt lịch hẹn: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+        alert('Đã xảy ra lỗi khi đặt lịch hẹn.');
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Đặt Lịch Hẹn</h1>
+  <form id="appointmentForm" onsubmit="submitForm(event)">
+    <label for="fullName">Họ Tên:</label><br>
+    <input type="text" id="fullName" name="fullName" required><br><br>
+    
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="appointmentDate">Ngày Đặt Lịch Hẹn:</label><br>
+    <input type="date" id="appointmentDate" name="appointmentDate" required><br><br>
+    
+    <label for="appointmentTime">Khung Giờ:</label><br>
+    <input type="time" id="appointmentTime" name="appointmentTime" required><br><br>
+    
+    <input type="submit" value="Đặt Lịch">
+  </form>
+</body>
+</html>
