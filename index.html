@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Appointment</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -19,8 +19,8 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="date">Booking Date:</label>
-            <input type="date" id="date" name="date" required>
+            <label for="bookingDate">Booking Date:</label>
+            <input type="date" id="bookingDate" name="bookingDate" required>
 
             <label for="time">Time:</label>
             <select id="time" name="time" required>
@@ -37,9 +37,9 @@
                 <option value="Legalization">Legalization</option>
             </select>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Book Now</button>
         </form>
-        <p id="message"></p>
+        <div id="confirmationMessage"></div>
     </div>
     <script src="script.js"></script>
 </body>
