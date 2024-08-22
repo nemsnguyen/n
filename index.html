@@ -3,46 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment Booking</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
-
+    <title>Booking Form</title>
+    <!-- Link to the datetimepicker library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
 </head>
 <body>
-    <div class="container">
+    <div style="max-width: 600px; margin: 0 auto;">
         <h1>Book an Appointment</h1>
-        <form id="bookingForm">
-            <label for="fullname">Fullname:</label>
-            <input type="text" id="fullname" name="fullname" required>
-
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="bookingDate">Booking Date:</label>
-            <input type="date" id="bookingDate" name="bookingDate" required>
-
-            <label for="time">Time:</label>
-            <select id="time" name="time" required>
-                <option value="9:30-10:30">9:30-10:30</option>
-                <option value="10:30-11:30">10:30-11:30</option>
-                <option value="14:30-15:30">14:30-15:30</option>
-                <option value="15:30-16:30">15:30-16:30</option>
-            </select>
-
-            <label for="service">Service:</label>
-            <select id="service" name="service" required>
-                <option value="Visa">Visa</option>
-                <option value="Passport">Passport</option>
-                <option value="Legalization">Legalization</option>
-            </select>
-
-            <button type="submit">Book Now</button>
-        </form>
-        <div id="confirmationMessage"></div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeoTFrc4CNJnT9QjJT_viexHQLYcFEpFJG-2TMKjoSW33DTgw/viewform?embedded=true" 
+             
+                width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include the datetimepicker library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script>
+        $(function(){
+            // Initialize datetimepicker
+            $('#datepicker').datetimepicker({
+                timepicker: false,
+                format: 'Y-m-d',
+                minDate: 0, // Set minimum date to today
+                beforeShowDay: function(date) {
+                    var day = date.getDay();
+                    // Disable Tuesday, Thursday, Saturday, Sunday
+                    return [(day != 2 && day != 4 && day != 6 && day != 0)];
+                }
+            });
+        });
+    </script>
 </body>
 </html>
