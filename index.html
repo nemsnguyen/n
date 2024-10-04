@@ -13,24 +13,7 @@
 <script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('670019450c42634ebbe20796', 'standard', {'width':'100vw','height':'600px'});"></script>
     
 
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Include the datetimepicker library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-    <script>
-        $(function(){
-            // Initialize datetimepicker
-            $('#datepicker').datetimepicker({
-                timepicker: false,
-                format: 'Y-m-d',
-                minDate: 0, // Set minimum date to today
-                beforeShowDay: function(date) {
-                    var day = date.getDay();
-                    // Disable Tuesday, Thursday, Saturday, Sunday
-                    return [(day != 2 && day != 4 && day != 6 && day != 0)];
-                }
-            });
-        });
-    </script>
+  
+    
 </body>
 </html>
